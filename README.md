@@ -19,5 +19,11 @@ the Temperature and humidity of the room in which the plant was placed on.
 
 ##Schematic
 
-![](https://i.imgur.com/1uq5HiX.png)
+![schematic](https://i.imgur.com/1uq5HiX.png)
+
+This schematic shows how the all the pieces are connected. Unfortunately, so far, I have not managed to
+make all the components work together. For now, it works well with the humidity and temperature
+sensors, though the BMP sensor can get the humidity and air pressure, I figured it wasn’t really that
+important, though I included it either way in the schematic.
+
 
