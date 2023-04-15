@@ -34,12 +34,14 @@ const char* ssid = "HUAWEI-P30-lite";
 const char* password = "******";
 ```
 Will store last time DHT was updated
-`float t = 0.0, h = 0.0;
+```c
+float t = 0.0, h = 0.0;
 unsigned long previousMillis = 0;  
-`
+```
 Updates DHT readings every 10 seconds
-`const long interval = 10000;`
-
+```c
+const long interval = 10000;
+```
 Main loop:
 ```c
 void loop() {
@@ -82,4 +84,23 @@ void loop() {
   delay(5000); // wait 5 s
   }
    ```
+
+## Connection
    
+I am using the board to connect to the WIFI and then
+have the board be assigned an IP address where the users connected to the same network have access
+to the information from the sensors. This can be easily seen on my phone hotspot. I can see the ESP
+clearly on the network created between them and the IP I need to connect to:
+
+![](https://i.imgur.com/r1hW0S3.png)
+
+## Website
+
+![](https://i.imgur.com/4j8LHvz.png)
+
+## Final State
+Here is the final product, where I introduced the components in a plastic plant that is a great case for
+this project in my opinion:
+
+![](https://i.imgur.com/9VPwOBZ.png)
+
