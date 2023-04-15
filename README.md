@@ -2,7 +2,7 @@
 
 ![Plant, the weather station](https://i.imgur.com/nYFJtBd.png)
 
-Esp8266 weather station with DHT22 sensor
+Esp8266 with DHT22 temperature & humidity sensor
 
 ## Intro
 
