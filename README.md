@@ -26,4 +26,63 @@ make all the components work together. For now, it works well with the humidity 
 sensors, though the BMP sensor can get the humidity and air pressure, I figured it wasn’t really that
 important, though I included it either way in the schematic.
 
+## Implementation
 
+
+```arduino
+
+const char* ssid = "HUAWEI-P30-lite"; // hotspot but could also be local network
+const char* password = "******";
+
+float t = 0.0, h = 0.0;
+unsigned long previousMillis = 0;  // will store last time DHT was updated
+
+// Updates DHT readings every 10 seconds
+const long interval = 10000;
+
+```
+
+The following code loops the whole time for 5 seconds and reads data from the senzor, then updates the webpage.
+
+```arduino
+void loop() {
+
+  // Print the values to the serial monitor
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis >= interval) {
+    // save the last time you updated the DHT values
+    previousMillis = currentMillis;
+    // Read temperature as Celsius (the default)
+    float newT = dht.readTemperature();
+
+    if (isnan(newT)) {
+      Serial.println("Failed to read from DHT sensor!");
+    } else {
+      t = newT;
+    }
+    float newH = dht.readHumidity();
+    // if humidity read failed, don't change h value
+    if (isnan(newH)) {
+      Serial.println("Failed to read from DHT sensor!");
+    } else {
+      h = newH;
+    }
+  }
+  //print data to the serial monitor
+  Serial.print("Temperature: ");
+  Serial.print(t);
+  Serial.print(" *C\t");
+  Serial.print("Humidity: ");
+  Serial.print(h);
+  Serial.println(" %");
+
+  //Handle client connections
+  WiFiClient client = server.available();
+  if (client) {
+    // Print the values to the web page
+   client.println("<!DOCTYPE html>");
+   ... // webpagecode
+  delay(5000); // wait 5 s
+  }
+   ```
+   
